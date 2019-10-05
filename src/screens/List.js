@@ -13,7 +13,7 @@ import {
 } from 'native-base';
 
 
-import Item from './Item';
+import Item from '../components/Item';
 
 class List extends React.Component{
 
