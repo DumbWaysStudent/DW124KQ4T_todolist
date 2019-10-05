@@ -38,7 +38,7 @@ class List extends React.Component{
     handlePress = () => {
         const { textValue } = this.state;
         const items = this.state.todolist;
-        items.push(textValue);
+        items.unshift(textValue);
         this.setState({
             textValue: '',
             todolist: items
