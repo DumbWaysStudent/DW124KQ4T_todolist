@@ -12,19 +12,10 @@ import {
   Text
 } from 'native-base';
 
-class Item extends React.Component{
+class ListItem extends React.Component{
 
     constructor(){
         super();
-        this.state={
-            todolist: [
-                'work',
-                'swim',
-                'study',
-                'sleep',
-                'run'
-            ]
-        }
     }
   render() {
     return (
@@ -37,4 +28,4 @@ class Item extends React.Component{
 
 
 
-export default Item;
+export default ListItem;

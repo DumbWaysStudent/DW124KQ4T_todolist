@@ -8,12 +8,11 @@
 
 import React from 'react';
 import {
-  View,
-  Text
+    Container
 } from 'native-base';
 
 
-import Item from '../components/Item';
+import ListItem from '../components/ListItem';
 
 class List extends React.Component{
 
@@ -31,11 +30,11 @@ class List extends React.Component{
     }
   render() {
     return (
-        <View>
+        <Container>
             {this.state.todolist.map((item, index) => {
-                return <Item item={item} key={index} />
+                return <ListItem item={item} key={index} />
             })}
-        </View>
+        </Container>
     );
   }
 }
