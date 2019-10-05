@@ -12,7 +12,8 @@ import {
   Text,
   Body,
   CardItem,
-  Card
+  Card,
+  Button
 } from 'native-base';
 
 class ListItem extends React.Component{
@@ -20,12 +21,14 @@ class ListItem extends React.Component{
     constructor(){
         super();
     }
+
   render() {
     return (
       <Card>
       <CardItem>
         <Body>
             <Text>{this.props.item}</Text>
+            <Button onPress={this.props.deleteItem.bind(this, this.props.id)} danger><Text>Delete</Text></Button>
         </Body>
         </CardItem>
         </Card>

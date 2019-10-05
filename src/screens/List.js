@@ -17,6 +17,8 @@ import {
     Header
 } from 'native-base';
 
+import { FlatList } from 'react-native';
+
 
 import ListItem from '../components/ListItem';
 
@@ -49,6 +51,12 @@ class List extends React.Component{
             textValue: text
         });
     }
+    deleteItem = (key) => {
+        this.setState({
+            todolist: [...this.state.todolist.filter((item, index) => index !== key)]
+        })
+        
+    }
   render() {
     return (
         <Container>
@@ -61,7 +69,7 @@ class List extends React.Component{
                     <Text>Submit</Text>
                 </Button>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItem item={item} key={index} />
+                    return <ListItem item={item} key={index} id={index} deleteItem={this.deleteItem} />
                 })}
             </Content>
         </Container>
