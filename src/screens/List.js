@@ -8,12 +8,17 @@
 
 import React from 'react';
 import {
-  View,
-  Text
+    Container,
+    Input,
+    Button,
+    Item,
+    Text,
+    Content,
+    Header
 } from 'native-base';
 
 
-import Item from '../components/Item';
+import ListItem from '../components/ListItem';
 
 class List extends React.Component{
 
@@ -26,16 +31,40 @@ class List extends React.Component{
                 'study',
                 'sleep',
                 'run'
-            ]
+            ],
+            textValue: null
         }
+    }
+    handlePress = () => {
+        const { textValue } = this.state;
+        const items = this.state.todolist;
+        items.push(textValue);
+        this.setState({
+            textValue: '',
+            todolist: items
+        });
+    }
+    handleChange = (text) => {
+        this.setState({
+            textValue: text
+        });
     }
   render() {
     return (
-        <View>
-            {this.state.todolist.map((item, index) => {
-                return <Item item={item} key={index} />
-            })}
-        </View>
+        <Container>
+            <Header />
+            <Content>
+                <Item>
+                    <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
+                </Item>
+                <Button success onPress={this.handlePress}>
+                    <Text>Submit</Text>
+                </Button>
+                {this.state.todolist.map((item, index) => {
+                    return <ListItem item={item} key={index} />
+                })}
+            </Content>
+        </Container>
     );
   }
 }
