@@ -17,13 +17,16 @@ import {
     Header,
     Body,
     Title,
-    Right
+    Right,
+    View,
+    Card,
+    CardItem
 } from 'native-base';
 
 import { FlatList } from 'react-native';
 
 
-import ListItem from '../components/ListItem';
+import ListItemDetail from '../components/ListItemDetail';
 
 class List extends React.Component{
 
@@ -31,11 +34,22 @@ class List extends React.Component{
         super();
         this.state={
             todolist: [
-                'work',
-                'swim',
-                'study',
-                'sleep',
-                'run'
+                {
+                    title: "work",
+                    done: false
+                }, {
+                    title: "swim",
+                    done: false
+                }, {
+                    title: "study",
+                    done: false
+                }, {
+                    title: "sleep",
+                    done: false
+                }, {
+                    title: "run",
+                    done: false
+                }
             ],
             textValue: null
         }
@@ -44,7 +58,7 @@ class List extends React.Component{
         const { textValue } = this.state;
         if(textValue != '' && textValue != null ){
             const items = this.state.todolist;
-            items.unshift(textValue);
+            items.unshift({title: textValue, done: false});
             this.setState({
                 textValue: '',
                 todolist: items
@@ -62,6 +76,13 @@ class List extends React.Component{
         })
         
     }
+    checkDone = (key) => {
+        let items = this.state.todolist;
+        items[key].done = !items[key].done
+        this.setState({
+            todolist: items
+        });
+    }
   render() {
     return (
         <Container>
@@ -72,14 +93,21 @@ class List extends React.Component{
                 <Right />
             </Header>
             <Content>
+                <Card>
+                    <CardItem>
+                    <Body>
                 <Item style={{ flexDirection:'row' }}>
                     <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
                 </Item>
+                </Body>
+                <Right>
                 <Button success onPress={this.handlePress}>
                     <Text>Submit</Text>
-                </Button>
+                </Button></Right>
+                </CardItem>
+                </Card>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItem item={item} key={index} id={index} deleteItem={this.deleteItem} />
+                    return <ListItemDetail item={item} key={index} id={index} deleteItem={this.deleteItem} checkDone={this.checkDone} />
                 })}
             </Content>
         </Container>
