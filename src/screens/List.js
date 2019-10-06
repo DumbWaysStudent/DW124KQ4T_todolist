@@ -15,8 +15,6 @@ import {
     Text,
     Content,
     Header,
-    Left,
-    Icon,
     Body,
     Title,
     Right
@@ -44,12 +42,14 @@ class List extends React.Component{
     }
     handlePress = () => {
         const { textValue } = this.state;
-        const items = this.state.todolist;
-        items.unshift(textValue);
-        this.setState({
-            textValue: '',
-            todolist: items
-        });
+        if(textValue != '' && textValue != null ){
+            const items = this.state.todolist;
+            items.unshift(textValue);
+            this.setState({
+                textValue: '',
+                todolist: items
+            });
+        }
     }
     handleChange = (text) => {
         this.setState({
