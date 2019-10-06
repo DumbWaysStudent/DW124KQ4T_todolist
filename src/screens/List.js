@@ -21,7 +21,7 @@ import {
 import { FlatList } from 'react-native';
 
 
-import ListItem from '../components/ListItem';
+import ListItemDetail from '../components/ListItemDetail';
 
 class List extends React.Component{
 
@@ -48,7 +48,7 @@ class List extends React.Component{
             </Header>
             <Content>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItem item={item} key={index}/>
+                    return <ListItemDetail item={item} key={index}/>
                 })}
             </Content>
         </Container>

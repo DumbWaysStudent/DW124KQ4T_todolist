@@ -8,30 +8,30 @@
 
 import React from 'react';
 import {
-  Card,
-  CardItem,
+  View,
+  Text,
   Body,
-  Text
+  CardItem,
+  Card,
+  ListItem
 } from 'native-base';
 
-class ListItem extends React.Component{
+class ListItemDetail extends React.Component{
 
     constructor(){
         super();
     }
   render() {
     return (
-      <Card>
-      <CardItem>
-      <Body>
-          <Text>{this.props.item}</Text>
-      </Body>
-      </CardItem>
-      </Card>
+      <ListItem>
+        <Body>
+        <Text>{this.props.item}</Text>
+        </Body>
+      </ListItem>
     );
   }
 }
 
 
 
-export default ListItem;
+export default ListItemDetail;
