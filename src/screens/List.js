@@ -17,13 +17,15 @@ import {
     Header,
     Body,
     Title,
-    Right
+    Right,
+    Card,
+    CardItem
 } from 'native-base';
 
 import { FlatList } from 'react-native';
 
 
-import ListItem from '../components/ListItem';
+import ListItemDetail from '../components/ListItemDetail';
 
 class List extends React.Component{
 
@@ -58,7 +60,7 @@ class List extends React.Component{
     }
     deleteItem = (key) => {
         this.setState({
-            todolist: [...this.state.todolist.filter((item, index) => index !== key)]
+            todolist: this.state.todolist.filter((item, index) => index !== key)
         })
         
     }
@@ -72,14 +74,21 @@ class List extends React.Component{
                 <Right />
             </Header>
             <Content>
+                <Card>
+                    <CardItem>
+                    <Body>
                 <Item style={{ flexDirection:'row' }}>
                     <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
                 </Item>
+                </Body>
+                <Right>
                 <Button success onPress={this.handlePress}>
                     <Text>Submit</Text>
-                </Button>
+                </Button></Right>
+                </CardItem>
+                </Card>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItem item={item} key={index} id={index} deleteItem={this.deleteItem} />
+                    return <ListItemDetail item={item} key={index} id={index} deleteItem={this.deleteItem} />
                 })}
             </Content>
         </Container>
