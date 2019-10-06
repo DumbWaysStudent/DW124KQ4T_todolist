@@ -72,7 +72,7 @@ class List extends React.Component{
     }
     deleteItem = (key) => {
         this.setState({
-            todolist: [...this.state.todolist.filter((item, index) => index !== key)]
+            todolist: this.state.todolist.filter((item, index) => index !== key)
         })
         
     }
