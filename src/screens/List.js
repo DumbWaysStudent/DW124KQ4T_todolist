@@ -8,8 +8,17 @@
 
 import React from 'react';
 import {
-    Container
+    Container,
+    Content,
+    Header,
+    Left,
+    Icon,
+    Body,
+    Title,
+    Right
 } from 'native-base';
+
+import { FlatList } from 'react-native';
 
 
 import ListItem from '../components/ListItem';
@@ -31,9 +40,17 @@ class List extends React.Component{
   render() {
     return (
         <Container>
-            {this.state.todolist.map((item, index) => {
-                return <ListItem item={item} key={index} />
-            })}
+            <Header>
+                <Body>
+                    <Title>Todo</Title>
+                </Body>
+                <Right />
+            </Header>
+            <Content>
+                {this.state.todolist.map((item, index) => {
+                    return <ListItem item={item} key={index}/>
+                })}
+            </Content>
         </Container>
     );
   }

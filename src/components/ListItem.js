@@ -8,7 +8,9 @@
 
 import React from 'react';
 import {
-  View,
+  Card,
+  CardItem,
+  Body,
   Text
 } from 'native-base';
 
@@ -19,9 +21,13 @@ class ListItem extends React.Component{
     }
   render() {
     return (
-        <View>
-            <Text>{this.props.item}</Text>
-        </View>
+      <Card>
+      <CardItem>
+      <Body>
+          <Text>{this.props.item}</Text>
+      </Body>
+      </CardItem>
+      </Card>
     );
   }
 }
