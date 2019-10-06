@@ -21,11 +21,15 @@ import {
   Right
 } from 'native-base';
 
+
 class ListItemDetail extends React.Component{
 
     constructor(){
         super();
     }
+
+    
+
 
   render() {
     return (
@@ -34,8 +38,8 @@ class ListItemDetail extends React.Component{
         <Body>
         <Text>{this.props.item.title}</Text>
         </Body>
-        <Right  style={{flex:0.7}}>
-        <Button rounded danger onPress={this.props.deleteItem.bind(this, this.props.id)} danger><Icon name='trash' /></Button></Right>
+        <Button rounded info onPress={this.props.redirectToEdit.bind(this, this.props.id)}><Icon name='pencil'  type="FontAwesome" /></Button>
+        <Button rounded danger onPress={this.props.deleteItem.bind(this, this.props.id)}><Icon name='trash' /></Button>
       </ListItem>  
     );
   }

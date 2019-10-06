@@ -30,8 +30,8 @@ import ListItemDetail from '../components/ListItemDetail';
 
 class List extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             todolist: [
                 {
@@ -51,9 +51,32 @@ class List extends React.Component{
                     done: false
                 }
             ],
-            textValue: null
+            textValue: null,
+            editedItem: null
         }
     }
+    componentDidMount(){
+        if(typeof this.props.navigation.state.params !== "undefined"){
+            this.updateItem();
+        }
+    }
+    componentDidUpdate(){
+        if(typeof this.props.navigation.state.params !== "undefined" && this.props.navigation.state.params.title !== this.state.editedItem){
+            this.updateItem();
+        }
+    }
+
+    updateItem = () => {
+        let items = this.state.todolist;
+        items[this.props.navigation.state.params.row].title=this.props.navigation.state.params.title ;
+
+        this.setState({
+            todolist: items,
+            editedItem: this.props.navigation.state.params.title
+        });
+    }
+    
+
     handlePress = () => {
         const { textValue } = this.state;
         if(textValue != '' && textValue != null ){
@@ -72,7 +95,7 @@ class List extends React.Component{
     }
     deleteItem = (key) => {
         this.setState({
-            todolist: [...this.state.todolist.filter((item, index) => index !== key)]
+            todolist: this.state.todolist.filter((item, index) => index !== key)
         })
         
     }
@@ -83,15 +106,15 @@ class List extends React.Component{
             todolist: items
         });
     }
+    redirectToEdit = (key) => {
+        this.props.navigation.navigate("EditList",{
+            row: key,
+            title: this.state.todolist[key].title
+        });
+    }
   render() {
     return (
         <Container>
-            <Header>
-                <Body>
-                    <Title>Todo</Title>
-                </Body>
-                <Right />
-            </Header>
             <Content>
                 <Card>
                     <CardItem>
@@ -107,7 +130,7 @@ class List extends React.Component{
                 </CardItem>
                 </Card>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItemDetail item={item} key={index} id={index} deleteItem={this.deleteItem} checkDone={this.checkDone} />
+                    return <ListItemDetail item={item} key={index} id={index} deleteItem={this.deleteItem} checkDone={this.checkDone} redirectToEdit={this.redirectToEdit} />
                 })}
             </Content>
         </Container>
