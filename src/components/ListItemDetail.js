@@ -12,27 +12,26 @@ import {
   Text,
   Body,
   CardItem,
-  Card
+  Card,
+  ListItem
 } from 'native-base';
 
-class ListItem extends React.Component{
+class ListItemDetail extends React.Component{
 
     constructor(){
         super();
     }
   render() {
     return (
-      <Card>
-      <CardItem>
+      <ListItem>
         <Body>
-            <Text>{this.props.item}</Text>
+        <Text>{this.props.item}</Text>
         </Body>
-        </CardItem>
-        </Card>
+      </ListItem>
     );
   }
 }
 
 
 
-export default ListItem;
+export default ListItemDetail;

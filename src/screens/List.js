@@ -17,11 +17,13 @@ import {
     Header,
     Body,
     Title,
-    Right
+    Right,
+    Card,
+    CardItem
 } from 'native-base';
 
 
-import ListItem from '../components/ListItem';
+import ListItemDetail from '../components/ListItemDetail';
 
 class List extends React.Component{
 
@@ -64,14 +66,21 @@ class List extends React.Component{
                 <Right />
             </Header>
             <Content>
-                <Item>
+                <Card>
+                    <CardItem>
+                    <Body>
+                <Item style={{ flexDirection:'row' }}>
                     <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
                 </Item>
+                </Body>
+                <Right>
                 <Button success onPress={this.handlePress}>
                     <Text>Submit</Text>
-                </Button>
+                </Button></Right>
+                </CardItem>
+                </Card>
                 {this.state.todolist.map((item, index) => {
-                    return <ListItem item={item} key={index} />
+                    return <ListItemDetail item={item} key={index} />
                 })}
             </Content>
         </Container>
