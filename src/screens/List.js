@@ -14,7 +14,10 @@ import {
     Item,
     Text,
     Content,
-    Header
+    Header,
+    Body,
+    Title,
+    Right
 } from 'native-base';
 
 
@@ -37,12 +40,14 @@ class List extends React.Component{
     }
     handlePress = () => {
         const { textValue } = this.state;
-        const items = this.state.todolist;
-        items.unshift(textValue);
-        this.setState({
-            textValue: '',
-            todolist: items
-        });
+        if(textValue != '' && textValue != null ){
+            const items = this.state.todolist;
+            items.unshift(textValue);
+            this.setState({
+                textValue: '',
+                todolist: items
+            });
+        }
     }
     handleChange = (text) => {
         this.setState({
@@ -52,7 +57,12 @@ class List extends React.Component{
   render() {
     return (
         <Container>
-            <Header />
+            <Header>
+                <Body>
+                    <Title>Todo</Title>
+                </Body>
+                <Right />
+            </Header>
             <Content>
                 <Item>
                     <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
