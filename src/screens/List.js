@@ -14,7 +14,12 @@ import {
     Item,
     Text,
     Content,
-    Header
+    Header,
+    Left,
+    Icon,
+    Body,
+    Title,
+    Right
 } from 'native-base';
 
 import { FlatList } from 'react-native';
@@ -60,9 +65,14 @@ class List extends React.Component{
   render() {
     return (
         <Container>
-            <Header />
+            <Header>
+                <Body>
+                    <Title>Todo</Title>
+                </Body>
+                <Right />
+            </Header>
             <Content>
-                <Item>
+                <Item style={{ flexDirection:'row' }}>
                     <Input placeholder="Add New Item" value={this.state.textValue} onChangeText={this.handleChange} />
                 </Item>
                 <Button success onPress={this.handlePress}>
