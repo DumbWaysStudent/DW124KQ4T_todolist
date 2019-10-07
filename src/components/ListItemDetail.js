@@ -8,17 +8,12 @@
 
 import React from 'react';
 import {
-  View,
   Text,
   Body,
-  Card,
-  CardItem,
   CheckBox,
   Button,
   ListItem,
   Icon,
-  Left,
-  Right
 } from 'native-base';
 
 
@@ -34,7 +29,7 @@ class ListItemDetail extends React.Component{
   render() {
     return (
       <ListItem>
-      <CheckBox onPress={this.props.checkDone.bind(this, this.props.id)} checked={this.props.item.done} />
+      <CheckBox onPress={this.props.checkDone.bind(this, this.props.id)} checked={this.props.item.isDone} />
         <Body>
         <Text>{this.props.item.title}</Text>
         </Body>
