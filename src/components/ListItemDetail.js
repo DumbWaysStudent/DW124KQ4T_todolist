@@ -8,11 +8,8 @@
 
 import React from 'react';
 import {
-  View,
   Text,
   Body,
-  CardItem,
-  Card,
   ListItem
 } from 'native-base';
 
