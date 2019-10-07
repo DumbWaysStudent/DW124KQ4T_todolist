@@ -22,8 +22,6 @@ import {
     CardItem
 } from 'native-base';
 
-import { FlatList } from 'react-native';
-
 
 import ListItemDetail from '../components/ListItemDetail';
 
