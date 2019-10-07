@@ -18,12 +18,9 @@ import {
     Body,
     Title,
     Right,
-    View,
     Card,
     CardItem
 } from 'native-base';
-
-import { FlatList } from 'react-native';
 
 
 import ListItemDetail from '../components/ListItemDetail';
@@ -36,19 +33,19 @@ class List extends React.Component{
             todolist: [
                 {
                     title: "work",
-                    done: false
+                    isDone: false
                 }, {
                     title: "swim",
-                    done: false
+                    isDone: false
                 }, {
                     title: "study",
-                    done: false
+                    isDone: false
                 }, {
                     title: "sleep",
-                    done: false
+                    isDone: false
                 }, {
                     title: "run",
-                    done: false
+                    isDone: false
                 }
             ],
             textValue: null
@@ -58,7 +55,7 @@ class List extends React.Component{
         const { textValue } = this.state;
         if(textValue != '' && textValue != null ){
             const items = this.state.todolist;
-            items.unshift({title: textValue, done: false});
+            items.unshift({title: textValue, isDone: false});
             this.setState({
                 textValue: '',
                 todolist: items
@@ -78,7 +75,7 @@ class List extends React.Component{
     }
     checkDone = (key) => {
         let items = this.state.todolist;
-        items[key].done = !items[key].done
+        items[key].isDone = !items[key].isDone
         this.setState({
             todolist: items
         });
